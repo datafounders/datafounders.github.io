@@ -1,0 +1,61 @@
+<header class="fixed w-full bg-white shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="flex items-center">
+                    <img class="h-10 w-auto" src="/assets/images/logo.png" alt="Data Founders">
+                    <span class="ml-3 text-2xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">Data Founders</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="/#services" class="text-gray-700 hover:text-red-600 px-3 py-2 text-base font-medium">Services</a>
+                <a href="/#approach" class="text-gray-700 hover:text-red-600 px-3 py-2 text-base font-medium">Approach</a>
+                <a href="/blog/" class="text-gray-700 hover:text-red-600 px-3 py-2 text-base font-medium">Insights</a>
+                <a href="https://calendly.com/adam-dathi-datafounders/30min" target="_blank" rel="noopener noreferrer" class="ml-6 inline-flex items-center px-6 py-3 border-2 border-red-600 text-base font-medium rounded-lg text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 hover:shadow-md">
+                    Book a Call
+                    <svg class="w-5 h-5 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m2 8v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5h18zm-4-7a3 3 0 100-6 3 3 0 000 6z" />
+                    </svg>
+                </a>
+            </nav>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <!-- Menu icon -->
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!-- Close icon -->
+                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+        <div class="pt-2 pb-3 space-y-1 bg-white shadow-lg">
+            <a href="/#services" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Services</a>
+            <a href="/#approach" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Approach</a>
+            <a href="/blog/" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Insights</a>
+            <div class="px-4 py-4 border-t border-gray-100">
+                <a href="https://calendly.com/adam-dathi-datafounders/30min" target="_blank" rel="noopener noreferrer" class="w-full text-center block px-4 py-3 border-2 border-red-600 text-base font-medium rounded-lg text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 hover:shadow-md">
+                    Book a Call
+                    <svg class="w-5 h-5 ml-2 -mr-1 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m2 8v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5h18zm-4-7a3 3 0 100-6 3 3 0 000 6z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Add spacing for fixed header -->
+<div class="h-20"></div>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Founders | Strategic Data & AI Consultancy</title>
+    <meta name="description" content="Data Founders provides strategic data consultancy, AI solutions, and data leadership for businesses seeking to transform their data into a competitive advantage.">
+    
+    <!-- Tailwind CSS with Custom Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            red: '#dc2626',
+                            darkRed: '#b91c1c',
+                            blue: '#2563eb',
+                            teal: '#0d9488',
+                            pink: '#db2777',
+                            green: '#059669',
+                            yellow: '#d97706',
+                            purple: '#7c3aed',
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            400: '#9ca3af',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111827',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                        serif: ['Source Serif Pro', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        :root {
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            --font-serif: 'Source Serif Pro', Georgia, serif;
+            
+            /* Primary Colors */
+            --color-primary: #dc2626;
+            --color-primary-dark: #b91c1c;
+            --color-primary-light: #fecaca;
+            
+            /* Secondary Colors */
+            --color-secondary: #2563eb;
+            --color-teal: #0d9488;
+            --color-pink: #db2777;
+            --color-yellow: #d97706;
+            --color-purple: #7c3aed;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-pink));
+            --gradient-secondary: linear-gradient(135deg, var(--color-secondary), var(--color-teal));
+            
+            /* Backgrounds */
+            --bg-light: #f8fafc;
+            --bg-offset: #f1f5f9;
+            
+            /* Text */
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        body { 
+            font-family: var(--font-sans);
+            color: var(--text-primary);
+            line-height: 1.7;
+            background-color: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: var(--font-serif);
+            font-weight: 600; /* font-semibold */
+            letter-spacing: -0.025em; /* tracking-tight */
+        }
+        
+        .prose {
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .prose a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .prose a:hover {
+            color: var(--color-accent-dark);
+            text-decoration: underline;
+        }
+        
+        .prose p,
+        .prose ul,
+        .prose ol {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .prose h2 {
+            font-size: 1.75rem;
+            margin-top: 3.5rem;
+            margin-bottom: 1.75rem;
+            color: #111827;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .prose h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+        
+        @media (min-width: 768px) {
+            .prose h2 {
+                font-size: 2.25rem;
+            }
+            
+            .prose {
+                font-size: 1.125rem;
+            }
+        }
+        .prose h3 {
+            @apply text-xl md:text-2xl mt-10 mb-4 text-gray-900;
+        }
+        .btn {
+            @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium transition-colors duration-200 rounded-md;
+        }
+        .btn-primary {
+            @apply bg-[#1C42F0] text-white hover:bg-[#033288];
+        }
+        .btn-outline {
+            @apply border border-gray-300 text-gray-700 hover:bg-gray-50;
+        }
+        .section-padding {
+            @apply py-16 md:py-24;
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    
+    <!-- Custom color palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f5ff',
+                            100: '#e0ebff',
+                            200: '#c7dbff',
+                            300: '#a5c4ff',
+                            400: '#7ea1ff',
+                            500: '#5d7cff',
+                            600: '#3c5af0',
+                            700: '#2e4bcc',
+                            800: '#1c42f0',
+                            900: '#0a2f9c',
+                        },
+                        secondary: {
+                            50: '#f5f9ff',
+                            100: '#ebf3ff',
+                            200: '#d6e7ff',
+                            300: '#b3d0ff',
+                            400: '#85aeff',
+                            500: '#5d8aff',
+                            600: '#3c6bf0',
+                            700: '#2a4fd6',
+                            800: '#1c42f0',
+                            900: '#0a2f9c',
+                        },
+                        accent: {
+                            red: '#D30259',
+                            blue: '#1C42F0',
+                            lightBlue: '#3C8DFF',
+                            teal: '#00838F',
+                            pink: '#FF7D9C',
+                            darkBlue: '#033288',
+                            green: '#81C784',
+                            lightGray: '#CCCCCC',
+                            gray: '#666666',
+                            cyan: '#26C6DA',
+                            darkPink: '#C51162',
+                            lightPurple: '#A0B4FF',
+                            darkGreen: '#2E7D32',
+                            googleBlue: '#1A73E8',
+                            lightPink: '#F06292',
+                            brightBlue: '#5273FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'sans-serif'],
+                        serif: ['Source Serif Pro', 'Georgia', 'serif']
+                    },
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                color: '#333',
+                                a: {
+                                    color: '#1C42F0',
+                                    '&:hover': {
+                                        color: '#033288',
+                                    },
+                                },
+                            },
+                        },
+                    },
+                }
+            },
+            plugins: [
+                require('@tailwindcss/typography'),
+            ],
+        }
+    </script>
+</head>
+<body class="antialiased bg-white">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-gray-100 transition-all duration-300 hover:shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center space-x-3">
+                        <img src="assets/Data Founders Logo.png" alt="Data Founders" class="h-12 md:h-16 transition-all duration-300 hover:scale-105">
+                        <span class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">Data Founders</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200">Services</a>
+                    <a href="#approach" class="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200">Approach</a>
+                    <a href="#insights" class="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200">Insights</a>
+                        <a href="#contact" class="ml-4 px-5 py-2.5 bg-accent.red text-white text-sm font-medium rounded-md hover:bg-accent.darkRed transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent.red">
+                        Get in touch
+                    </a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent.red" 
+                            aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Icon when menu is closed -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Icon when menu is open -->
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 bg-white shadow-lg">
+                <a href="#services" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Services</a>
+                <a href="#approach" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Approach</a>
+                <a href="#insights" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Insights</a>
+                <div class="px-4 py-4 border-t border-gray-100">
+                            <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 border-2 border-red-600 text-base font-bold rounded-lg text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ml-6">
+                                Schedule a Consultation
+                                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                </svg>
+                            </a>div>
+    </header>
+    
+    <!-- Mobile menu toggle script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                
+                // Toggle between menu and close icons
+                const menuIcon = mobileMenuButton.querySelector('svg:not(.hidden)');
+                const closeIcon = mobileMenuButton.querySelector('svg.hidden');
+                if (menuIcon) menuIcon.classList.add('hidden');
+                if (closeIcon) closeIcon.classList.remove('hidden');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    // Reset icons
+                    const icons = mobileMenuButton.querySelectorAll('svg');
+                    icons[0].classList.remove('hidden');
+                    icons[1].classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-16 md:pt-40 md:pb-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0 fade-in relative">
+                    <!-- Decorative elements -->
+                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-red-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                    <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                    <div class="absolute top-1/2 -right-10 w-24 h-24 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+                        Strategic Data Leadership <span class="text-accent.red">for Growth-Focused</span> Businesses
+                    </h1>
+                    <div class="prose prose-lg mb-8">
+                        <p>We help small to medium-sized enterprises build robust data capabilities, establish effective data teams, and implement AI strategies that drive measurable business outcomes.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+                        <a href="#services" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-lg text-white bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                                Explore Our Services
+                                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </a>button>
+                    </div>
+                </div>
+                <div class="relative fade-in" style="animation-delay: 100ms">
+                    <!-- Data visualization graphic -->
+                    <div class="absolute -top-10 -right-10 w-40 h-40">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#dc2626" d="M45.5,-70.7C57.4,-64.2,64.2,-48.9,67.5,-34.1C70.8,-19.3,70.5,-5,68.1,8.9C65.7,22.7,61.2,36.1,51.4,44.7C41.6,53.3,26.5,57.2,12.3,62.9C-1.8,68.6,-15,76.2,-25.1,72.6C-35.2,69,-42.1,54.3,-49.4,40.7C-56.7,27.2,-64.3,14.7,-67.2,0.4C-70.1,-13.8,-68.4,-27.7,-60.9,-38.6C-53.4,-49.5,-40.2,-57.6,-27.7,-63.9C-15.1,-70.3,-3.3,-75.1,10.3,-77.5C23.9,-79.9,47.8,-80,45.5,-70.7Z" transform="translate(100 100)" />
+                        </svg>
+                    </div>
+                    <div class="bg-white p-1 shadow-lg rounded-lg overflow-hidden">
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent.red/10 to-accent.teal/10">
+                                <div class="text-center p-8">
+                                    <div class="text-5xl font-bold text-gray-900 mb-4">Data + Strategy</div>
+                                    <div class="text-xl text-gray-600">Transforming businesses through data leadership</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="relative py-24 bg-white">
+        <!-- Decorative elements -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ3aGl0ZSI+PC9yZWN0PjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2dyaWQpIiBvcGFjaXR5PSIwLjAyIi8+PHBhdGggZD0iTTEwMCAwSDB2MTAwaDEwMFYwem0tMjUgMjV2NTBoNTBWMjVINzV6TTUwIDUwdjUwaDUwVjUwSDUwem0tMjUgMjV2NTBoNTBWNzVIMjV6IiBmaWxsPSJub25lIiBzdHJva2U9IiNlNWU3ZWYiIHN0cm9rZS13aWR0aD0iMSIvPjxkZWZzPjxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxwYXRoIGQ9Ik0yNSAwTDUwIDI1VjBMNjIuNSAxMi41TDc1IDI1VjBMNTAgMjVMMjUgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U1ZTdlZiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48L3N2Zz4=')] opacity-5"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6">Strategic Data Services</h2>
+                <div class="w-20 h-1 bg-accent.red mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600">We provide comprehensive data leadership and strategic guidance to help businesses transform their data into a competitive advantage.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-accent.red/10 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-accent.red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Strategy</h3>
+                    <p class="text-gray-600">Comprehensive data strategy development aligned with your business objectives, from initial assessment to implementation roadmap.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-accent.teal/10 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-accent.teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Team Structure</h3>
+                    <p class="text-gray-600">Expert guidance on building and structuring high-performing data teams tailored to your organisation's size and objectives.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-accent.pink/10 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-accent.pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">AI Strategy</h3>
+                    <p class="text-gray-600">Strategic AI implementation planning to leverage emerging technologies while ensuring ethical and responsible use.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-accent.darkBlue/10 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-accent.darkBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Governance</h3>
+                    <p class="text-gray-600">Robust governance frameworks to ensure data quality, security, and compliance with evolving regulations.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-accent.green/10 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-accent.green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Analytics Engineering</h3>
+                    <p class="text-gray-600">Design and implementation of scalable analytics infrastructure to support data-driven decision making.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-accent.red/10 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-accent.red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Maturity Assessment</h3>
+                    <p class="text-gray-600">Comprehensive evaluation of your current data capabilities and roadmap for advancement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" class="relative py-24 bg-gradient-to-br from-white via-blue-50 to-gray-50">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 right-0 w-1/3 h-1/3 -mr-40 -mt-40 bg-gradient-to-br from-red-100 to-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6">Our Approach</h2>
+                <div class="w-20 h-1 bg-accent.red mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600">We believe in a collaborative, results-driven approach that delivers tangible business value.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-accent.red/10 flex items-center justify-center text-2xl font-bold text-accent.red mb-4">1</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Discovery & Assessment</h3>
+                    <p class="text-gray-600">We begin by thoroughly understanding your business objectives, challenges, and current data landscape.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-accent.teal/10 flex items-center justify-center text-2xl font-bold text-accent.teal mb-4">2</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Strategy Development</h3>
+                    <p class="text-gray-600">We create a tailored strategy that aligns with your business goals and delivers measurable outcomes.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-accent.darkPink/10 flex items-center justify-center text-2xl font-bold text-accent.darkPink mb-4">3</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Implementation & Enablement</h3>
+                    <p class="text-gray-600">We work alongside your team to implement solutions and build internal capabilities for long-term success.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gray-50 p-8 rounded-lg border border-gray-200">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Why Choose Data Founders?</h3>
+                    <p class="text-gray-600 mb-6">With over a decade of experience in data leadership roles, our team brings deep expertise and practical knowledge to every engagement. We focus on delivering sustainable solutions that drive real business impact.</p>
+                    <a href="#contact" class="inline-block btn btn-primary">Discuss Your Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-24 bg-gradient-to-br from-white to-gray-50">
+        <!-- Decorative elements -->
+        <div class="absolute bottom-0 left-0 w-1/3 h-1/3 -ml-40 -mb-40 bg-gradient-to-tr from-blue-50 to-teal-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6">Get in Touch</h2>
+                <div class="w-20 h-1 bg-accent.red mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600">Ready to discuss how we can help transform your data into a strategic asset? We'd love to hear from you.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Send us a message</h3>
+                    
+                    <form id="contactForm" class="space-y-6" onsubmit="event.preventDefault(); handleFormSubmit();">
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label for="first_name" class="block text-sm font-medium text-gray-700 mb-1">First name</label>
+                                <input type="text" name="first_name" id="first_name" autocomplete="given-name" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label for="last_name" class="block text-sm font-medium text-gray-700 mb-1">Last name</label>
+                                <input type="text" name="last_name" id="last_name" autocomplete="family-name" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+                            <input id="email" name="email" type="email" autocomplete="email" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors">
+                        </div>
+                        
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                            <input type="text" name="company" id="company" autocomplete="organization" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">How can we help?</label>
+                            <textarea id="message" name="message" rows="4" 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors"></textarea>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="privacy_policy" name="privacy_policy" type="checkbox" 
+                                       class="h-4 w-4 text-accent.red focus:ring-accent.red border-gray-300 rounded">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="privacy_policy" class="text-gray-600">I agree to the <a href="#" class="text-accent.red hover:text-accent.darkRed font-medium">privacy policy</a></label>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <button type="submit" class="w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-lg shadow-lg text-base font-bold text-white bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 transform hover:-translate-y-0.5">
+                                Send Message
+                                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </button>
+                            <p id="formSuccess" class="mt-3 text-center text-sm text-green-600 hidden">Thank you! Your message has been sent. We'll get back to you soon.</p>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-12 w-12 rounded-full bg-accent.red/10 flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-accent.red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-sm font-medium text-gray-500">Email</h4>
+                                    <p class="mt-1 text-gray-900">hello@datafounders.co.uk</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-12 w-12 rounded-full bg-accent.red/10 flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-accent.red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-sm font-medium text-gray-500">Location</h4>
+                                    <p class="mt-1 text-gray-900">124 City Road, London, UK</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-6 border-t border-gray-200">
+                                <h4 class="text-sm font-medium text-gray-500 mb-4">Follow Us</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-gray-400 hover:text-accent.red transition-colors">
+                                        <span class="sr-only">LinkedIn</span>
+                                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="text-gray-400 hover:text-accent.red transition-colors">
+                                        <span class="sr-only">Twitter</span>
+                                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63a9.935 9.935 0 002.46-2.548l-.047-.02z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-red-50 to-pink-50 p-8 rounded-xl border-2 border-red-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m2 8v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5h18zm-4-7a3 3 0 100-6 3 3 0 000 6z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Schedule a call</h4>
+                        <p class="text-gray-600 mb-6">Prefer to speak with us directly? Book a 30-minute consultation at your convenience.</p>
+                        <a href="https://calendly.com/yourusername/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-red-600 to-pink-600 border border-transparent rounded-lg shadow-sm hover:from-red-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300">
+                            Book a call
+                            <svg class="w-5 h-5 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m2 8v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5h18zm-4-7a3 3 0 100-6 3 3 0 000 6z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="relative py-24 bg-gradient-to-br from-white via-blue-50 to-gray-50 overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 right-0 w-1/3 h-1/3 -mr-40 -mt-40 bg-gradient-to-br from-red-100 to-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div class="absolute bottom-0 left-0 w-1/3 h-1/3 -ml-40 -mb-40 bg-gradient-to-tr from-blue-100 to-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <div class="md:col-span-5">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="assets/Data Founders Logo.png" alt="Data Founders" class="h-12">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">Data Founders</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Strategic data consultancy helping businesses transform their data into a competitive advantage through expert guidance and tailored solutions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <span class="sr-only">LinkedIn</span>
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <span class="sr-only">Twitter</span>
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63a9.935 9.935 0 002.46-2.548l-.047-.02z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-2 md:col-start-8">
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">Data Strategy</a></li>
+                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">Team Structure</a></li>
+                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">AI Strategy</a></li>
+                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">Data Governance</a></li>
+                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">Analytics Engineering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="md:col-span-2">
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors">Our Approach</a></li>
+                        <li><a href="#insights" class="text-base text-gray-400 hover:text-white transition-colors">Insights</a></li>
+                        <li><a href="#contact" class="text-base text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="md:col-span-3">
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest insights on data strategy and leadership.</p>
+                    <form class="mt-4 sm:flex">
+                        <label for="email-address" class="sr-only">Email address</label>
+                        <input id="email-address" name="email" type="email" autocomplete="email" required class="w-full px-4 py-3 border border-gray-700 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-accent.blue focus:border-transparent" placeholder="Enter your email">
+                        <button type="submit" class="mt-3 w-full sm:mt-0 sm:ml-3 sm:w-auto px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-accent.blue hover:bg-accent.darkBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent.blue transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800">
+                <div class="md:flex md:items-center md:justify-between">
+                    <div class="flex space-x-6 md:order-2">
+                        <a href="#" class="text-sm text-gray-400 hover:text-gray-300 transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-sm text-gray-400 hover:text-gray-300 transition-colors">Terms of Service</a>
+                        <a href="#" class="text-sm text-gray-400 hover:text-gray-300 transition-colors">Cookie Policy</a>
+                    </div>
+                    <p class="mt-8 text-sm text-gray-500 md:mt-0 md:order-1">&copy; 2023 Data Founders Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu script -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

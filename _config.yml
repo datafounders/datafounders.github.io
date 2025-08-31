@@ -1,0 +1,23 @@
+title: Data Founders
+description: Boutique data consultancy helping businesses unlock the power of their data.
+baseurl: ""
+url: "https://yourusername.github.io"
+github_username: yourgithubusername
+email: your-email@example.com
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
