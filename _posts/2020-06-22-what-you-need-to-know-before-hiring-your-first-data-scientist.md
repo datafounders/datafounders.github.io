@@ -1,6 +1,7 @@
 ---
+layout: post
 title: "What You Need to Know BEFORE Hiring Your First Data Scientist"
-date: 2020-06-22
+date: 2020-06-22 12:00:00 +0100
 author: Adam Dathi
 excerpt: "Learn the essential considerations and common pitfalls when hiring your first data scientist to ensure success and avoid costly mistakes."
 image: /assets/images/blog/hiring-data-scientist.jpg

@@ -1,23 +1,58 @@
 title: Data Founders
 description: Boutique data consultancy helping businesses unlock the power of their data.
 baseurl: ""
-url: "https://yourusername.github.io"
-github_username: yourgithubusername
-email: your-email@example.com
+url: "https://datafounders.co.uk"
+email: hello@datafounders.co.uk
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
+# Blog settings
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+    sort_by: date
+    sort_order: descending
+
+# Defaults
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
+      author: "Adam Dathi"
+      share: true
   - scope:
       path: ""
       type: "pages"
     values:
-      layout: "page"
+      layout: "default"
+
+# Permalinks
+permalink: pretty
+
+# Pagination
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+# Timezone
+timezone: Europe/London
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .bundle
+  - .git
+  - .gitignore
