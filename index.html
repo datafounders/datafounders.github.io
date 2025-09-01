@@ -57,10 +57,10 @@
         }
     </script>
     
-    <!-- Custom fonts -->
+    <!-- Hanken Grotesque Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         @keyframes blob {
@@ -331,8 +331,8 @@
                 <a href="#approach" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Approach</a>
                 <a href="#insights" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Insights</a>
                 <div class="px-4 py-4 border-t border-gray-100">
-                            <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 border-2 border-red-600 text-base font-bold rounded-lg text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ml-6">
-                                Schedule a Consultation
+                            <a href="https://calendly.com/adam-dathi-datafounders/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 border-2 border-red-600 text-base font-bold rounded-lg text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ml-6">
+                                Book a Call
                                 <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
                                 </svg>
@@ -553,61 +553,16 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Send us a message</h3>
-                    
-                    <form id="contactForm" class="space-y-6" onsubmit="event.preventDefault(); handleFormSubmit();">
-                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                            <div>
-                                <label for="first_name" class="block text-sm font-medium text-gray-700 mb-1">First name</label>
-                                <input type="text" name="first_name" id="first_name" autocomplete="given-name" 
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors">
-                            </div>
-                            <div>
-                                <label for="last_name" class="block text-sm font-medium text-gray-700 mb-1">Last name</label>
-                                <input type="text" name="last_name" id="last_name" autocomplete="family-name" 
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors">
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
-                            <input id="email" name="email" type="email" autocomplete="email" 
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors">
-                        </div>
-                        
-                        <div>
-                            <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
-                            <input type="text" name="company" id="company" autocomplete="organization" 
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors">
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">How can we help?</label>
-                            <textarea id="message" name="message" rows="4" 
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-accent.red focus:border-accent.red focus:outline-none transition-colors"></textarea>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex items-center h-5">
-                                <input id="privacy_policy" name="privacy_policy" type="checkbox" 
-                                       class="h-4 w-4 text-accent.red focus:ring-accent.red border-gray-300 rounded">
-                            </div>
-                            <div class="ml-3 text-sm">
-                                <label for="privacy_policy" class="text-gray-600">I agree to the <a href="#" class="text-accent.red hover:text-accent.darkRed font-medium">privacy policy</a></label>
-                            </div>
-                        </div>
-                        
-                        <div class="pt-2">
-                            <button type="submit" class="w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-lg shadow-lg text-base font-bold text-white bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 transform hover:-translate-y-0.5">
-                                Send Message
-                                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                                </svg>
-                            </button>
-                            <p id="formSuccess" class="mt-3 text-center text-sm text-green-600 hidden">Thank you! Your message has been sent. We'll get back to you soon.</p>
-                        </div>
-                    </form>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Book a Free Consultation</h3>
+                    <p class="text-gray-600 mb-8">Schedule a 30-minute call to discuss how we can help with your data strategy and implementation needs.</p>
+                    <a href="https://calendly.com/adam-dathi-datafounders/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 border-2 border-red-600 text-base font-bold rounded-lg text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        Book a Call
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <p class="mt-4 text-sm text-gray-500">Or email us at <a href="mailto:contact@datafounders.co.uk" class="text-red-600 hover:underline">contact@datafounders.co.uk</a></p>
                 </div>
                 
                 <div class="space-y-6">
@@ -693,16 +648,10 @@
                     </div>
                     <p class="text-gray-400 mb-6">Strategic data consultancy helping businesses transform their data into a competitive advantage through expert guidance and tailored solutions.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <a href="https://linkedin.com/company/datafounders" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
                             <span class="sr-only">LinkedIn</span>
                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <span class="sr-only">Twitter</span>
-                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63a9.935 9.935 0 002.46-2.548l-.047-.02z"/>
+                                <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
                             </svg>
                         </a>
                     </div>
@@ -729,29 +678,11 @@
                     </ul>
                 </div>
                 
-                <div class="md:col-span-3">
-                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Newsletter</h4>
-                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest insights on data strategy and leadership.</p>
-                    <form class="mt-4 sm:flex">
-                        <label for="email-address" class="sr-only">Email address</label>
-                        <input id="email-address" name="email" type="email" autocomplete="email" required class="w-full px-4 py-3 border border-gray-700 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-accent.blue focus:border-transparent" placeholder="Enter your email">
-                        <button type="submit" class="mt-3 w-full sm:mt-0 sm:ml-3 sm:w-auto px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-accent.blue hover:bg-accent.darkBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent.blue transition-colors">
-                            Subscribe
-                        </button>
-                    </form>
+                <div class="mt-8 border-t border-gray-800 pt-8">
+                    <p class="text-sm text-gray-500 text-center">&copy; 2025 Data Founders Ltd. All rights reserved.</p>
                 </div>
             </div>
             
-            <div class="mt-12 pt-8 border-t border-gray-800">
-                <div class="md:flex md:items-center md:justify-between">
-                    <div class="flex space-x-6 md:order-2">
-                        <a href="#" class="text-sm text-gray-400 hover:text-gray-300 transition-colors">Privacy Policy</a>
-                        <a href="#" class="text-sm text-gray-400 hover:text-gray-300 transition-colors">Terms of Service</a>
-                        <a href="#" class="text-sm text-gray-400 hover:text-gray-300 transition-colors">Cookie Policy</a>
-                    </div>
-                    <p class="mt-8 text-sm text-gray-500 md:mt-0 md:order-1">&copy; 2023 Data Founders Ltd. All rights reserved.</p>
-                </div>
-            </div>
         </div>
     </footer>
 
