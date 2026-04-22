@@ -1,10 +1,14 @@
 ---
+layout: post
 title: "Getting Started with Data Strategy: A Beginner's Guide"
-date: 2023-08-31
-author: "Your Name"
+date: 2023-08-31 12:00:00 +0100
+author: Adam Dathi
 category: "Data Strategy"
-tags: ["data strategy", "beginner", "business"]
-image: "/images/blog/data-strategy.jpg"
+tags:
+  - data strategy
+  - beginner
+  - business
+image: /assets/images/blog/data-strategy.jpg
 excerpt: "Learn the fundamentals of developing an effective data strategy for your business in this comprehensive guide."
 ---
 
