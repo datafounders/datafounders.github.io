@@ -1,680 +1,424 @@
-<!DOCTYPE html>
-<html lang="en-GB">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Founders | Strategic Data & AI Consultancy</title>
-    <meta name="description" content="Data Founders provides strategic data consultancy, AI solutions, and data leadership for businesses seeking to transform their data into a competitive advantage.">
-    
-    <!-- Tailwind CSS with Custom Configuration -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        },
-                        accent: {
-                            red: '#dc2626',
-                            darkRed: '#b91c1c',
-                            blue: '#2563eb',
-                            teal: '#0d9488',
-                            pink: '#db2777',
-                            green: '#059669',
-                            yellow: '#d97706',
-                            purple: '#7c3aed',
-                        },
-                        gray: {
-                            50: '#f9fafb',
-                            100: '#f3f4f6',
-                            200: '#e5e7eb',
-                            300: '#d1d5db',
-                            400: '#9ca3af',
-                            500: '#6b7280',
-                            600: '#4b5563',
-                            700: '#374151',
-                            800: '#1f2937',
-                            900: '#111827',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-                        serif: ['Source Serif Pro', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    
-    <!-- Hanken Grotesque Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-        
-        .animate-blob {
-            animation: blob 7s infinite;
-        }
-        
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-        
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-        :root {
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            --font-serif: 'Source Serif Pro', Georgia, serif;
-            
-            /* Primary Colors */
-            --color-primary: #dc2626;
-            --color-primary-dark: #b91c1c;
-            --color-primary-light: #fecaca;
-            
-            /* Secondary Colors */
-            --color-secondary: #2563eb;
-            --color-teal: #0d9488;
-            --color-pink: #db2777;
-            --color-yellow: #d97706;
-            --color-purple: #7c3aed;
-            
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-pink));
-            --gradient-secondary: linear-gradient(135deg, var(--color-secondary), var(--color-teal));
-            
-            /* Backgrounds */
-            --bg-light: #f8fafc;
-            --bg-offset: #f1f5f9;
-            
-            /* Text */
-            --text-primary: #1f2937;
-            --text-secondary: #4b5563;
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        body { 
-            font-family: var(--font-sans);
-            color: var(--text-primary);
-            line-height: 1.7;
-            background-color: var(--bg-light);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        h1, h2, h3, h4, h5, h6 { 
-            font-family: var(--font-serif);
-            font-weight: 600; /* font-semibold */
-            letter-spacing: -0.025em; /* tracking-tight */
-        }
-        
-        .prose {
-            max-width: 48rem;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-        
-        .prose a {
-            color: var(--color-accent);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-        
-        .prose a:hover {
-            color: var(--color-accent-dark);
-            text-decoration: underline;
-        }
-        
-        .prose p,
-        .prose ul,
-        .prose ol {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-        .prose h2 {
-            font-size: 1.75rem;
-            margin-top: 3.5rem;
-            margin-bottom: 1.75rem;
-            color: #111827;
-            position: relative;
-            padding-bottom: 0.75rem;
-        }
-        
-        .prose h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 3rem;
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-        }
-        
-        @media (min-width: 768px) {
-            .prose h2 {
-                font-size: 2.25rem;
-            }
-            
-            .prose {
-                font-size: 1.125rem;
-            }
-        }
-        .prose h3 {
-            @apply text-xl md:text-2xl mt-10 mb-4 text-gray-900;
-        }
-        .btn {
-            @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium transition-colors duration-200 rounded-md;
-        }
-        .btn-primary {
-            @apply bg-[#1C42F0] text-white hover:bg-[#033288];
-        }
-        .btn-outline {
-            @apply border border-gray-300 text-gray-700 hover:bg-gray-50;
-        }
-        .section-padding {
-            @apply py-16 md:py-24;
-        }
-        .fade-in {
-            animation: fadeIn 0.6s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-    
-    <!-- Custom color palette -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0f5ff',
-                            100: '#e0ebff',
-                            200: '#c7dbff',
-                            300: '#a5c4ff',
-                            400: '#7ea1ff',
-                            500: '#5d7cff',
-                            600: '#3c5af0',
-                            700: '#2e4bcc',
-                            800: '#1c42f0',
-                            900: '#0a2f9c',
-                        },
-                        secondary: {
-                            50: '#f5f9ff',
-                            100: '#ebf3ff',
-                            200: '#d6e7ff',
-                            300: '#b3d0ff',
-                            400: '#85aeff',
-                            500: '#5d8aff',
-                            600: '#3c6bf0',
-                            700: '#2a4fd6',
-                            800: '#1c42f0',
-                            900: '#0a2f9c',
-                        },
-                        accent: {
-                            red: '#D30259',
-                            blue: '#1C42F0',
-                            lightBlue: '#3C8DFF',
-                            teal: '#00838F',
-                            pink: '#FF7D9C',
-                            darkBlue: '#033288',
-                            green: '#81C784',
-                            lightGray: '#CCCCCC',
-                            gray: '#666666',
-                            cyan: '#26C6DA',
-                            darkPink: '#C51162',
-                            lightPurple: '#A0B4FF',
-                            darkGreen: '#2E7D32',
-                            googleBlue: '#1A73E8',
-                            lightPink: '#F06292',
-                            brightBlue: '#5273FF'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'sans-serif'],
-                        serif: ['Source Serif Pro', 'Georgia', 'serif']
-                    },
-                    typography: {
-                        DEFAULT: {
-                            css: {
-                                color: '#333',
-                                a: {
-                                    color: '#1C42F0',
-                                    '&:hover': {
-                                        color: '#033288',
-                                    },
-                                },
-                            },
-                        },
-                    },
-                }
-            },
-            plugins: [
-                require('@tailwindcss/typography'),
-            ],
-        }
-    </script>
-</head>
-<body class="antialiased bg-white">
-    <!-- Navigation -->
-    <header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-gray-100 transition-all duration-300 hover:shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="flex items-center space-x-3">
-                        <img src="assets/data-founders-logo-no-text.png" alt="Data Founders" class="h-12 md:h-16 transition-all duration-300 hover:scale-105">
-                        <span class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">Data Founders</span>
-                    </a>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200">Services</a>
-                    <a href="#approach" class="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200">Approach</a>
-                    <a href="/blog.html" class="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200">Insights</a>
-                        <a href="#contact" class="ml-4 px-5 py-2.5 bg-accent.red text-white text-sm font-medium rounded-md hover:bg-accent.darkRed transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent.red">
-                        Get in touch
-                    </a>
-                </nav>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent.red" 
-                            aria-expanded="false" id="mobile-menu-button">
-                        <span class="sr-only">Open main menu</span>
-                        <!-- Icon when menu is closed -->
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <!-- Icon when menu is open -->
-                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+---
+layout: default
+title: Strategic Data & AI Consultancy
+---
+
+<!-- Hero Section -->
+<section id="home" class="pt-12 pb-16 md:pt-16 md:pb-24 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+
+      <!-- Left: copy -->
+      <div class="mb-12 lg:mb-0 relative">
+        <div class="absolute -top-10 -left-10 w-32 h-32 bg-red-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute -bottom-8 right-8 w-40 h-40 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-red-50 border border-red-100 text-red-700 text-sm font-medium mb-6">
+          Strategic Data Leadership
         </div>
-        
-        <!-- Mobile menu, show/hide based on menu state -->
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="pt-2 pb-3 space-y-1 bg-white shadow-lg">
-                <a href="#services" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Services</a>
-                <a href="#approach" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Approach</a>
-                <a href="/blog/" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-gray-100">Insights</a>
-                <a href="#contact" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t border-b border-gray-100">
-                    Contact Us
-                </a>
-    </header>
-    
-    <!-- Mobile menu toggle script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-                mobileMenu.classList.toggle('hidden');
-                
-                // Toggle between menu and close icons
-                const menuIcon = mobileMenuButton.querySelector('svg:not(.hidden)');
-                const closeIcon = mobileMenuButton.querySelector('svg.hidden');
-                if (menuIcon) menuIcon.classList.add('hidden');
-                if (closeIcon) closeIcon.classList.remove('hidden');
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-                    // Reset icons
-                    const icons = mobileMenuButton.querySelectorAll('svg');
-                    icons[0].classList.remove('hidden');
-                    icons[1].classList.add('hidden');
-                }
-            });
-        });
-    </script>
-    <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-16 md:pt-40 md:pb-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                <div class="mb-12 lg:mb-0 fade-in relative">
-                    <!-- Decorative elements -->
-                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-red-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-                    <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-                    <div class="absolute top-1/2 -right-10 w-24 h-24 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
-                        Strategic Data Leadership <span class="text-accent.red">for Growth-Focused</span> Businesses
-                    </h1>
-                    <div class="prose prose-lg mb-8">
-                        <p>We help small to medium-sized enterprises build robust data capabilities, establish effective data teams, and implement AI strategies that drive measurable business outcomes.</p>
-                    </div>
-                    <div class="mt-8">
-                        <a href="https://calendly.com/adam-dathi-datafounders/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                            Book a Free Consultation
-                            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m2 8v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5h18zm-4-7a3 3 0 100-6 3 3 0 000 6z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="relative fade-in" style="animation-delay: 100ms">
-                    <!-- Data visualization graphic -->
-                    <div class="bg-white p-1 shadow-lg rounded-lg overflow-hidden">
-                        <div class="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="text-center p-8">
-                                    <div class="text-5xl font-bold text-gray-900 mb-4">Data Leadership</div>
-                                    <div class="text-xl text-gray-600">Transforming businesses through data leadership</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight" style="font-family: 'Source Serif Pro', Georgia, serif; letter-spacing: -0.025em;">
+          Turn your data into a genuine
+          <span class="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent"> competitive edge</span>
+        </h1>
+
+        <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-xl">
+          We help growth-focused SMEs build robust data capabilities, structure high-performing data teams, and implement AI strategies that drive measurable outcomes.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="https://calendly.com/adam-dathi-datafounders/30min" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+            Book a Free Consultation
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m2 8v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5h18zm-4-7a3 3 0 100-6 3 3 0 000 6z"/>
+            </svg>
+          </a>
+          <a href="#services"
+             class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+            See our services
+          </a>
         </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="relative py-24 bg-white">
-        <!-- Decorative elements -->
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ3aGl0ZSI+PC9yZWN0PjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2dyaWQpIiBvcGFjaXR5PSIwLjAyIi8+PHBhdGggZD0iTTEwMCAwSDB2MTAwaDEwMFYwem0tMjUgMjV2NTBoNTBWMjVINzV6TTUwIDUwdjUwaDUwVjUwSDUwem0tMjUgMjV2NTBoNTBWNzVIMjV6IiBmaWxsPSJub25lIiBzdHJva2U9IiNlNWU3ZWYiIHN0cm9rZS13aWR0aD0iMSIvPjxkZWZzPjxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxwYXRoIGQ9Ik0yNSAwTDUwIDI1VjBMNjIuNSAxMi41TDc1IDI1VjBMNTAgMjVMMjUgMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U1ZTdlZiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48L3N2Zz4=')] opacity-5"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6 leading-tight py-1">Data Strategy & Leadership</h2>
-                <div class="w-20 h-1 bg-accent.red mx-auto mb-8"></div>
-                <p class="text-lg text-gray-600">We provide comprehensive data leadership and strategic guidance to help businesses transform their data into a competitive advantage.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 rounded-full bg-accent.red/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent.red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Strategy</h3>
-                    <p class="text-gray-600">Comprehensive data strategy development aligned with your business objectives, from initial assessment to implementation roadmap.</p>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 rounded-full bg-accent.teal/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent.teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Team Structure</h3>
-                    <p class="text-gray-600">Expert guidance on building and structuring high-performing data teams tailored to your organisation's size and objectives.</p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 rounded-full bg-accent.pink/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent.pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">AI Strategy</h3>
-                    <p class="text-gray-600">Strategic AI implementation planning to leverage emerging technologies while ensuring ethical and responsible use.</p>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 rounded-full bg-accent.darkBlue/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent.darkBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Governance</h3>
-                    <p class="text-gray-600">Robust governance frameworks to ensure data quality, security, and compliance with evolving regulations.</p>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 rounded-full bg-accent.green/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent.green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Analytics Engineering</h3>
-                    <p class="text-gray-600">Design and implementation of scalable analytics infrastructure to support data-driven decision making.</p>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 rounded-full bg-accent.red/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent.red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Maturity Assessment</h3>
-                    <p class="text-gray-600">Comprehensive evaluation of your current data capabilities and roadmap for advancement.</p>
-                </div>
-            </div>
+        <!-- Trust signals -->
+        <div class="mt-10 flex items-center gap-6 text-sm text-gray-500">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            15+ years experience
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            London-based
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            SME specialists
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Approach Section -->
-    <section id="approach" class="relative py-24 bg-gradient-to-br from-white via-blue-50 to-gray-50">
-        <!-- Decorative elements -->
-        <div class="absolute top-0 right-0 w-1/3 h-1/3 -mr-40 -mt-40 bg-gradient-to-br from-red-100 to-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6">Our Approach</h2>
-                <div class="w-20 h-1 bg-accent.red mx-auto mb-8"></div>
-                <p class="text-lg text-gray-600">We believe in a collaborative, results-driven approach that delivers tangible business value.</p>
+      <!-- Right: data maturity visual -->
+      <div class="relative">
+        <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 shadow-2xl">
+          <p class="text-gray-400 text-xs font-semibold uppercase tracking-widest mb-6">Data Value Pyramid</p>
+
+          <div class="space-y-3">
+            <!-- Layer 5 -->
+            <div class="group relative">
+              <div class="flex items-center gap-4 bg-gradient-to-r from-red-600 to-pink-600 rounded-lg px-5 py-3 mx-auto" style="width: 55%;">
+                <div class="w-2 h-2 rounded-full bg-white opacity-80 flex-shrink-0"></div>
+                <div>
+                  <p class="text-white text-sm font-semibold">Prescriptive</p>
+                  <p class="text-red-100 text-xs">What should we do?</p>
+                </div>
+              </div>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Step 1 -->
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 mx-auto rounded-full bg-accent.red/10 flex items-center justify-center text-2xl font-bold text-accent.red mb-4">1</div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Discovery & Assessment</h3>
-                    <p class="text-gray-600">We begin by thoroughly understanding your business objectives, challenges, and current data landscape.</p>
+            <!-- Layer 4 -->
+            <div class="group relative">
+              <div class="flex items-center gap-4 bg-white bg-opacity-10 border border-white border-opacity-10 rounded-lg px-5 py-3 mx-auto" style="width: 67%;">
+                <div class="w-2 h-2 rounded-full bg-pink-400 flex-shrink-0"></div>
+                <div>
+                  <p class="text-white text-sm font-semibold">Predictive</p>
+                  <p class="text-gray-400 text-xs">What will happen?</p>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 mx-auto rounded-full bg-accent.teal/10 flex items-center justify-center text-2xl font-bold text-accent.teal mb-4">2</div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Strategy Development</h3>
-                    <p class="text-gray-600">We create a tailored strategy that aligns with your business goals and delivers measurable outcomes.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 mx-auto rounded-full bg-accent.darkPink/10 flex items-center justify-center text-2xl font-bold text-accent.darkPink mb-4">3</div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Implementation & Enablement</h3>
-                    <p class="text-gray-600">We work alongside your team to implement solutions and build internal capabilities for long-term success.</p>
-                </div>
+              </div>
             </div>
-
-            <div class="mt-16 bg-gray-50 p-8 rounded-lg border border-gray-200">
-                <div class="max-w-3xl mx-auto text-center">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Why Choose Data Founders?</h3>
-                    <p class="text-gray-600 mb-6">With over a decade of experience in data leadership roles, our team brings deep expertise and practical knowledge to every engagement. We focus on delivering sustainable solutions that drive real business impact.</p>
-                    <a href="#contact" class="inline-block bg-gradient-to-r from-red-600 to-pink-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">Discuss Your Project</a>
+            <!-- Layer 3 -->
+            <div class="group relative">
+              <div class="flex items-center gap-4 bg-white bg-opacity-10 border border-white border-opacity-10 rounded-lg px-5 py-3 mx-auto" style="width: 79%;">
+                <div class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></div>
+                <div>
+                  <p class="text-white text-sm font-semibold">Insights</p>
+                  <p class="text-gray-400 text-xs">Why did it happen?</p>
                 </div>
+              </div>
             </div>
+            <!-- Layer 2 -->
+            <div class="group relative">
+              <div class="flex items-center gap-4 bg-white bg-opacity-10 border border-white border-opacity-10 rounded-lg px-5 py-3 mx-auto" style="width: 89%;">
+                <div class="w-2 h-2 rounded-full bg-teal-400 flex-shrink-0"></div>
+                <div>
+                  <p class="text-white text-sm font-semibold">Reporting</p>
+                  <p class="text-gray-400 text-xs">What happened?</p>
+                </div>
+              </div>
+            </div>
+            <!-- Layer 1 -->
+            <div class="group relative">
+              <div class="flex items-center gap-4 bg-white bg-opacity-10 border border-white border-opacity-10 rounded-lg px-5 py-3 w-full">
+                <div class="w-2 h-2 rounded-full bg-gray-400 flex-shrink-0"></div>
+                <div>
+                  <p class="text-white text-sm font-semibold">Data Foundation</p>
+                  <p class="text-gray-400 text-xs">Collection, storage, governance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-white border-opacity-10 flex items-center justify-between">
+            <p class="text-gray-400 text-xs">Most organisations are here</p>
+            <div class="flex items-center gap-1">
+              <div class="w-2 h-2 rounded-full bg-teal-400"></div>
+              <div class="w-2 h-2 rounded-full bg-gray-600"></div>
+              <div class="w-2 h-2 rounded-full bg-gray-600"></div>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="relative py-24 bg-gradient-to-br from-white to-gray-50">
-        <!-- Decorative elements -->
-        <div class="absolute bottom-0 left-0 w-1/3 h-1/3 -ml-40 -mb-40 bg-gradient-to-tr from-blue-50 to-teal-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6">Get in Touch</h2>
-                <div class="w-20 h-1 bg-accent.red mx-auto mb-8"></div>
-                <p class="text-lg text-gray-600">Ready to discuss how we can help transform your data into a strategic asset? We'd love to hear from you.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Contact Us</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-accent.red/10 flex items-center justify-center">
-                                <svg class="h-6 w-6 text-accent.red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-sm font-medium text-gray-500">Email</h4>
-                                <a href="mailto:hello@datafounders.co.uk" class="mt-1 text-gray-900 hover:text-red-600">hello@datafounders.co.uk</a>
-                            </div>
-                        </div>
-                        <div class="pt-6">
-                            <a href="https://calendly.com/adam-dathi-datafounders/30min" target="_blank" rel="noopener noreferrer" class="w-full inline-flex justify-center items-center px-6 py-3 border-2 border-red-600 text-base font-bold rounded-lg text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                                Book a Free Consultation
-                                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Our Location</h3>
-                        <div class="space-y-6">
-                            
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 h-12 w-12 rounded-full bg-accent.red/10 flex items-center justify-center">
-                                    <svg class="h-6 w-6 text-accent.red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-sm font-medium text-gray-500">Location</h4>
-                                    <p class="mt-1 text-gray-900">124 City Road, London, UK</p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Floating badge -->
+        <div class="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg px-4 py-3 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500">We help you climb</p>
+            <p class="text-sm font-semibold text-gray-900">Every layer</p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer -->
-    <footer class="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-                <div class="md:col-span-5">
-                    <div class="mb-6">
-                        <span class="text-2xl font-bold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">Data Founders</span>
-                    </div>
-                    <p class="text-gray-300 mb-6">Strategic data consultancy helping businesses transform their data into a competitive advantage through expert guidance and tailored solutions.</p>
-                    <div class="flex space-x-4">
-                        <a href="https://linkedin.com/company/datafounders" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
-                            <span class="sr-only">LinkedIn</span>
-                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="md:col-span-3 md:col-start-8">
-                    <h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Services</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">Data Strategy</a></li>
-                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">Team Structure</a></li>
-                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">AI Strategy</a></li>
-                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">Data Governance</a></li>
-                        <li><a href="#services" class="text-base text-gray-400 hover:text-white transition-colors">Analytics Engineering</a></li>
-                    </ul>
-                </div>
-                
-                <div class="md:col-span-2">
-                    <h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Company</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#about" class="text-base text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#approach" class="text-base text-gray-400 hover:text-white transition-colors">Our Approach</a></li>
-                        <li><a href="/blog/" class="text-base text-gray-400 hover:text-white transition-colors">Insights</a></li>
-                        <li><a href="#contact" class="text-base text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Copyright bar -->
-        <div class="border-t border-gray-800 py-6">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="text-sm text-gray-400 text-center">&copy; 2025 Data Founders Ltd. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    </div>
+  </div>
+</section>
 
-    <!-- Mobile menu script -->
-    <script>
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Adjust for fixed header
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+<!-- Services Section -->
+<section id="services" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6 leading-tight py-1" style="font-family: 'Source Serif Pro', Georgia, serif;">
+        Data Strategy & Leadership
+      </h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-red-600 to-pink-600 mx-auto mb-8 rounded-full"></div>
+      <p class="text-lg text-gray-600">Comprehensive data leadership and strategic guidance to transform your data into a competitive advantage.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+        <div class="w-12 h-12 rounded-lg bg-red-50 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Strategy</h3>
+        <p class="text-gray-600">Comprehensive strategy development aligned with your business objectives — from initial assessment to implementation roadmap.</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+        <div class="w-12 h-12 rounded-lg bg-teal-50 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Team Structure</h3>
+        <p class="text-gray-600">Expert guidance on building and structuring high-performing data teams tailored to your organisation's size and objectives.</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+        <div class="w-12 h-12 rounded-lg bg-pink-50 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">AI Strategy</h3>
+        <p class="text-gray-600">Strategic AI implementation planning to leverage emerging technologies while ensuring ethical and responsible use.</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+        <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Governance</h3>
+        <p class="text-gray-600">Robust governance frameworks to ensure data quality, security, and compliance with evolving regulations.</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+        <div class="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Analytics Engineering</h3>
+        <p class="text-gray-600">Design and implementation of scalable analytics infrastructure to support data-driven decision making across your organisation.</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+        <div class="w-12 h-12 rounded-lg bg-red-50 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Maturity Assessment</h3>
+        <p class="text-gray-600">Comprehensive evaluation of your current data capabilities and a clear roadmap for advancement to the next level.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Approach Section -->
+<section id="approach" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6" style="font-family: 'Source Serif Pro', Georgia, serif;">
+        Our Approach
+      </h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-red-600 to-pink-600 mx-auto mb-8 rounded-full"></div>
+      <p class="text-lg text-gray-600">Collaborative and results-driven — we work alongside your team rather than handing over a deck and leaving.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      <div class="text-center p-8 rounded-xl bg-gray-50 border border-gray-100">
+        <div class="w-16 h-16 mx-auto rounded-full bg-red-100 flex items-center justify-center text-2xl font-bold text-red-600 mb-6" style="font-family: 'Source Serif Pro', Georgia, serif;">1</div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Discovery & Assessment</h3>
+        <p class="text-gray-600">We thoroughly understand your business objectives, challenges, and current data landscape before recommending anything.</p>
+      </div>
+      <div class="text-center p-8 rounded-xl bg-gray-50 border border-gray-100">
+        <div class="w-16 h-16 mx-auto rounded-full bg-teal-100 flex items-center justify-center text-2xl font-bold text-teal-600 mb-6" style="font-family: 'Source Serif Pro', Georgia, serif;">2</div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Strategy Development</h3>
+        <p class="text-gray-600">We create a tailored strategy aligned with your business goals, with clear priorities and measurable outcomes.</p>
+      </div>
+      <div class="text-center p-8 rounded-xl bg-gray-50 border border-gray-100">
+        <div class="w-16 h-16 mx-auto rounded-full bg-pink-100 flex items-center justify-center text-2xl font-bold text-pink-600 mb-6" style="font-family: 'Source Serif Pro', Georgia, serif;">3</div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Implementation & Enablement</h3>
+        <p class="text-gray-600">We implement solutions alongside your team and build internal capability so results outlast the engagement.</p>
+      </div>
+    </div>
+
+    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-10 text-center">
+      <h3 class="text-2xl font-semibold text-white mb-4" style="font-family: 'Source Serif Pro', Georgia, serif;">Why Data Founders?</h3>
+      <p class="text-gray-300 mb-8 max-w-2xl mx-auto">With over 15 years of experience in data leadership roles, we bring deep expertise and practical knowledge to every engagement. No juniors, no templates — just senior thinking applied to your specific situation.</p>
+      <a href="#contact" class="inline-block bg-gradient-to-r from-red-600 to-pink-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+        Discuss Your Project
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Insights Teaser Section -->
+<section id="insights" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+      <div>
+        <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-3" style="font-family: 'Source Serif Pro', Georgia, serif;">
+          Insights
+        </h2>
+        <p class="text-lg text-gray-600">Practical thinking on data strategy, team building, and AI — no hype.</p>
+      </div>
+      <a href="/blog/" class="inline-flex items-center text-red-600 hover:text-red-700 font-medium whitespace-nowrap">
+        All articles
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Featured post 1 -->
+      <article class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
+        <div class="h-48 bg-gradient-to-br from-red-50 to-pink-50 flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-semibold uppercase tracking-wider mb-3">Data Strategy · Hiring</div>
+            <p class="text-gray-700 font-medium text-sm leading-snug">What You Need to Know BEFORE Hiring Your First Data Scientist</p>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="text-sm text-gray-500 mb-3">22 June 2020 · Adam Dathi</div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">
+            <a href="/blog/2020/06/22/what-you-need-to-know-before-hiring-your-first-data-scientist.html" class="hover:text-red-600 transition-colors">
+              What You Need to Know BEFORE Hiring Your First Data Scientist
+            </a>
+          </h3>
+          <p class="text-gray-600 text-sm mb-4 flex-1">Too often data science is viewed as a panacea. If you don't understand when to invest in a data science function, you'll be setting them — and yourself — up for failure.</p>
+          <a href="/blog/2020/06/22/what-you-need-to-know-before-hiring-your-first-data-scientist.html" class="inline-flex items-center text-red-600 hover:text-red-700 font-medium text-sm">
+            Read more
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Featured post 2 -->
+      <article class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
+        <div class="h-48 bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-3">Data Strategy</div>
+            <p class="text-gray-700 font-medium text-sm leading-snug">Getting Started with Data Strategy: A Beginner's Guide</p>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="text-sm text-gray-500 mb-3">31 August 2023 · Adam Dathi</div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">
+            <a href="/blog/2023/08/31/getting-started-with-data-strategy.html" class="hover:text-red-600 transition-colors">
+              Getting Started with Data Strategy: A Beginner's Guide
+            </a>
+          </h3>
+          <p class="text-gray-600 text-sm mb-4 flex-1">A solid data strategy is no longer optional for businesses that want to stay competitive. Here's how to develop one that actually works for your organisation.</p>
+          <a href="/blog/2023/08/31/getting-started-with-data-strategy.html" class="inline-flex items-center text-red-600 hover:text-red-700 font-medium text-sm">
+            Read more
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6" style="font-family: 'Source Serif Pro', Georgia, serif;">
+        Get in Touch
+      </h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-red-600 to-pink-600 mx-auto mb-8 rounded-full"></div>
+      <p class="text-lg text-gray-600">Ready to discuss how we can help transform your data into a strategic asset? We'd love to hear from you.</p>
+    </div>
+
+    <div class="max-w-2xl mx-auto">
+      <div class="bg-white p-10 rounded-2xl shadow-sm border border-gray-100">
+
+        <div class="space-y-6 mb-8">
+          <div class="flex items-center gap-4">
+            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-red-50 flex items-center justify-center">
+              <svg class="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Email</p>
+              <a href="mailto:hello@datafounders.co.uk" class="text-gray-900 font-medium hover:text-red-600 transition-colors">hello@datafounders.co.uk</a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-red-50 flex items-center justify-center">
+              <svg class="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Location</p>
+              <p class="text-gray-900 font-medium">124 City Road, London, UK</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://calendly.com/adam-dathi-datafounders/30min" target="_blank" rel="noopener noreferrer"
+           class="w-full inline-flex justify-center items-center px-6 py-4 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white text-base font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+          Book a Free Consultation
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m2 8v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5h18zm-4-7a3 3 0 100-6 3 3 0 000 6z"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+.animate-blob { animation: blob 7s infinite; }
+.animation-delay-2000 { animation-delay: 2s; }
+</style>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
