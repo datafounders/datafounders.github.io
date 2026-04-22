@@ -289,55 +289,37 @@ title: Strategic Data & AI Consultancy
 
     <div class="grid md:grid-cols-2 gap-8">
 
-      <!-- Featured post 1 -->
-      <article class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
-        <div class="h-48 bg-gradient-to-br from-red-50 to-pink-50 flex items-center justify-center p-8">
-          <div class="text-center">
-            <div class="inline-flex items-center px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-semibold uppercase tracking-wider mb-3">Data Strategy · Hiring</div>
-            <p class="text-gray-700 font-medium text-sm leading-snug">What You Need to Know BEFORE Hiring Your First Data Scientist</p>
+      {% assign card_colors = "red,blue" | split: "," %}
+      {% for post in site.posts limit:2 %}
+        {% assign color = card_colors[forloop.index0] %}
+        <article class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
+          <div class="h-48 {% if color == 'red' %}bg-gradient-to-br from-red-50 to-pink-50{% else %}bg-gradient-to-br from-blue-50 to-teal-50{% endif %} flex items-center justify-center p-8">
+            <div class="text-center">
+              {% if post.categories.size > 0 %}
+              <div class="inline-flex items-center px-3 py-1 rounded-full {% if color == 'red' %}bg-red-100 text-red-700{% else %}bg-blue-100 text-blue-700{% endif %} text-xs font-semibold uppercase tracking-wider mb-3">
+                {{ post.categories | join: " · " }}
+              </div>
+              {% endif %}
+              <p class="text-gray-700 font-medium text-sm leading-snug">{{ post.title }}</p>
+            </div>
           </div>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <div class="text-sm text-gray-500 mb-3">22 June 2020 · Adam Dathi</div>
-          <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">
-            <a href="/blog/2020/06/22/what-you-need-to-know-before-hiring-your-first-data-scientist.html" class="hover:text-red-600 transition-colors">
-              What You Need to Know BEFORE Hiring Your First Data Scientist
+          <div class="p-6 flex flex-col flex-1">
+            <div class="text-sm text-gray-500 mb-3">{{ post.date | date: "%-d %B %Y" }}{% if post.author %} · {{ post.author }}{% endif %}</div>
+            <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">
+              <a href="{{ post.url | relative_url }}" class="hover:text-red-600 transition-colors">
+                {{ post.title }}
+              </a>
+            </h3>
+            <p class="text-gray-600 text-sm mb-4 flex-1">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            <a href="{{ post.url | relative_url }}" class="inline-flex items-center text-red-600 hover:text-red-700 font-medium text-sm">
+              Read more
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
             </a>
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 flex-1">Too often data science is viewed as a panacea. If you don't understand when to invest in a data science function, you'll be setting them — and yourself — up for failure.</p>
-          <a href="/blog/2020/06/22/what-you-need-to-know-before-hiring-your-first-data-scientist.html" class="inline-flex items-center text-red-600 hover:text-red-700 font-medium text-sm">
-            Read more
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- Featured post 2 -->
-      <article class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
-        <div class="h-48 bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center p-8">
-          <div class="text-center">
-            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-3">Data Strategy</div>
-            <p class="text-gray-700 font-medium text-sm leading-snug">Getting Started with Data Strategy: A Beginner's Guide</p>
           </div>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <div class="text-sm text-gray-500 mb-3">31 August 2023 · Adam Dathi</div>
-          <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">
-            <a href="/blog/2023/08/31/getting-started-with-data-strategy.html" class="hover:text-red-600 transition-colors">
-              Getting Started with Data Strategy: A Beginner's Guide
-            </a>
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 flex-1">A solid data strategy is no longer optional for businesses that want to stay competitive. Here's how to develop one that actually works for your organisation.</p>
-          <a href="/blog/2023/08/31/getting-started-with-data-strategy.html" class="inline-flex items-center text-red-600 hover:text-red-700 font-medium text-sm">
-            Read more
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </article>
+        </article>
+      {% endfor %}
 
     </div>
 
