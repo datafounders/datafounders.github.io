@@ -8,11 +8,9 @@ tags:
   - data strategy
   - beginner
   - business
-image: /assets/images/blog/data-strategy.jpg
 excerpt: "Learn the fundamentals of developing an effective data strategy for your business in this comprehensive guide."
 ---
 
-# Getting Started with Data Strategy: A Beginner's Guide
 
 In today's data-driven world, having a solid data strategy is no longer optional for businesses that want to stay competitive. But what exactly is a data strategy, and how do you create one that works for your organization?
 

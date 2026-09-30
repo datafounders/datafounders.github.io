@@ -1,5 +1,11 @@
 title: Data Founders
-description: Boutique data consultancy helping businesses unlock the power of their data.
+description: London-based data and AI consultancy helping growth-focused SMEs build data strategy, data teams and AI roadmaps that deliver measurable outcomes.
+logo: /assets/data_founders_logo.png
+lang: en_GB
+social:
+  name: Data Founders
+  links:
+    - https://www.linkedin.com/company/datafounders
 baseurl: ""
 url: "https://datafounders.co.uk"
 email: hello@datafounders.co.uk
@@ -34,6 +40,7 @@ defaults:
       type: "pages"
     values:
       layout: "default"
+      image: /assets/data_founders_logo.png
 
 # Permalinks
 permalink: pretty
